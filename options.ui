@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Options</class>
+ <widget class="QWidget" name="Options">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QPushButton" name="SaveConfig">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>240</y>
+     <width>121</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>保存设置并退出</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="Both">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>200</y>
+     <width>91</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>两者皆可</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="King2Tiles">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>160</y>
+     <width>91</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>将王移动两格</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="CastlingPath">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>141</y>
+     <width>91</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>王车易位方式</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="KingOnRook">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>180</y>
+     <width>91</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>将王移到车上</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="PawnToQueen">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>160</y>
+     <width>73</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>开启</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="PawnToUnknown">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>182</y>
+     <width>73</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>关闭</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="AutoAccending">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>140</y>
+     <width>91</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>兵自动升变为后</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="LightColor">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>50</y>
+     <width>73</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>浅色</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="LightColorMode">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>26</y>
+     <width>91</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>主题色</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="DarkColor">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>70</y>
+     <width>73</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>深色</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="Click">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>50</y>
+     <width>73</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>点击</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="ClickToMove">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>26</y>
+     <width>91</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>移动棋子方式</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="Drag">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>70</y>
+     <width>73</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>拖动</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/BlackBishop.png</file>
+        <file>res/BlackKing.png</file>
+        <file>res/BlackKnight.png</file>
+        <file>res/BlackPawn.png</file>
+        <file>res/BlackQueen.png</file>
+        <file>res/BlackRook.png</file>
+        <file>res/Board.png</file>
+        <file>res/WhiteBishop.png</file>
+        <file>res/WhiteKing.png</file>
+        <file>res/WhiteKnight.png</file>
+        <file>res/WhitePawn.png</file>
+        <file>res/WhiteQueen.png</file>
+        <file>res/WhiteRook.png</file>
+        <file>res/ValidBlock.png</file>
+        <file>res/ValidPoint.png</file>
+        <file>res/Checked.png</file>
+        <file>res/WenQuan.ttf</file>
+    </qresource>
+</RCC>
