@@ -4,34 +4,34 @@
 国际象棋
 
 #### 软件架构
-软件架构说明
+使用的语言：QT/C++
 
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  Release 中解压相应压缩文件
+2.  打开 Chess.exe
 
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1.  标准开局：以标准的国际象棋开局开始游戏
+2.  从 FEN 导入棋局：通过 FEN 字符串从中间开始游戏
+3.  导出为 PGN 棋谱：导出这盘棋的 PGN 棋谱（未实现功能）
+4.  导出为 FEN 字符串：导出这盘棋的 FEN 字符串
+5.  结束对局：立即结束当前对局
+6.  偏好设置：对下棋的偏好进行设置
+7.  退出程序：立即退出当前程序
 
 #### 参与贡献
 
 1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
+2.  新建分支
 3.  提交代码
 4.  新建 Pull Request
-
+5.  给个小星星（）
 
 #### 特技
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+1.  能玩国际象棋喵
+2.  没了喵
+3.  有彩蛋喵

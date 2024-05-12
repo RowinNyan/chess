@@ -9,8 +9,10 @@
 #include <QImage>
 #include <QPixmap>
 #include <QFile>
+#include <QIcon>
 #include <QTextStream>
 #include <QHeaderView>
+#include <QString>
 
 #include "chess.h"
 #include "config.h"

@@ -17,5 +17,6 @@
         <file>res/ValidPoint.png</file>
         <file>res/Checked.png</file>
         <file>res/WenQuan.ttf</file>
+        <file>res/Chess.ico</file>
     </qresource>
 </RCC>

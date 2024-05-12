@@ -271,6 +271,7 @@ void Widget::InitWindow(){
     ui->StdStart->setFont(font1);
     ui->StopGame->setFont(font1);
     ui->TurnLabel->setFont(font2);
+    setWindowIcon(QIcon(ICON_CHESS));
     options = new Options();
     acc = new Acc();
     fen = new InputFEN();

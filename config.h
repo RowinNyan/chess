@@ -21,7 +21,7 @@ enum End{
 #define WINDOW_TITLE_ACC "升变"
 
 #define FONT_MAIN ":/res/WenQuan.ttf"
-#define ICON_CHESS 
+#define ICON_CHESS ":/res/Chess.ico"
 #define FILE_CONFIG "config"
 
 #define IMG_BOARD ":/res/Board.png"
