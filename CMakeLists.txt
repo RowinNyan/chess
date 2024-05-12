@@ -33,7 +33,10 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         chess.cpp
         config.h
         res.qrc
-        inputfen.h inputfen.cpp inputfen.ui
+        inputfen.h
+        inputfen.cpp
+        inputfen.ui
+        easteregg.ui
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET chess APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

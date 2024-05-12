@@ -33,4 +33,23 @@ private:
     Ui::Acc *ui;
 };
 
+#include <QDialog>
+
+namespace Ui {
+class EasterEgg;
+}
+
+class EasterEgg : public QDialog
+{
+    Q_OBJECT
+
+public:
+    explicit EasterEgg(QWidget *parent = nullptr);
+    ~EasterEgg();
+    void paintEvent(QPaintEvent*);
+
+private:
+    Ui::EasterEgg *ui;
+};
+
 #endif // ACC_H

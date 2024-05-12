@@ -6,6 +6,8 @@ InputFEN::InputFEN(QWidget *parent)
     , ui(new Ui::InputFEN)
 {
     ui->setupUi(this);
+    setWindowIcon(QIcon(ICON_CHESS));
+    setFixedSize(400, 200);
 }
 
 InputFEN::~InputFEN()

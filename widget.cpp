@@ -6,6 +6,7 @@ Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
 {
+    setFocusPolicy(Qt::StrongFocus);
     ui->setupUi(this);
     InitProgram();
     InitWindow();
@@ -227,6 +228,22 @@ void Widget::mousePressEvent(QMouseEvent* event){
     }
 }
 
+void Widget::keyPressEvent(QKeyEvent* event){
+    using namespace Qt;
+    Key Easter_Egg[10] = {Key_Up, Key_Up, Key_Down, Key_Down, Key_Left, Key_Right, Key_Left, Key_Right, Key_B, Key_A};
+    if(event->key()==Easter_Egg[Egg]){
+        Egg++;
+        if(Egg == 10){
+            EasterEgg* ee = new EasterEgg();
+            ee->show();
+        }
+    }
+    else{
+        Egg = 0;
+    }
+    
+}
+
 void Widget::InitProgram(){
     Options::ClickToMove = true;
     Options::LightColorMode = true;
@@ -253,6 +270,7 @@ void Widget::InitProgram(){
         }
     }
     file.close();
+    Egg = 0;
 }
 
 void Widget::InitWindow(){

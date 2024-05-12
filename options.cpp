@@ -24,6 +24,7 @@ void Options::InitWindow(){
     }
     setFixedSize(400, 300);
     setWindowTitle(WINDOW_TITLE_CONFIG);
+    setWindowIcon(QIcon(ICON_CHESS));
     _ClickToMove = new QButtonGroup(this);
     _LightColorMode = new QButtonGroup(this);
     _AutoAccending = new QButtonGroup(this);

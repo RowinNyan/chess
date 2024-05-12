@@ -1,8 +1,6 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#include <QFont>
-
 enum ChessType{
     Null, King, Queen, Bishop, kNight, Rook, Pawn
 };
@@ -40,5 +38,6 @@ enum End{
 #define IMG_BLACK_PAWN ":/res/BlackPawn.png"
 #define IMG_VALID_BLOCK ":/res/ValidBlock.png"
 #define IMG_VALID_POINT ":/res/ValidPoint.png"
+#define IMG_0 ":/res/0.png"
 
 #endif

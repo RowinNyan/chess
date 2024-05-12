@@ -10,6 +10,7 @@
 #include <QPixmap>
 #include <QFile>
 #include <QIcon>
+#include <QFont>
 #include <QTextStream>
 #include <QHeaderView>
 #include <QString>
@@ -38,6 +39,7 @@ public:
     void InitWindow();
     void paintEvent(QPaintEvent*);
     void mousePressEvent(QMouseEvent*);
+    void keyPressEvent(QKeyEvent*);
     void IsCheckmate();
     void PawnAcc(short);
 
@@ -59,7 +61,7 @@ private:
     QTimer* timer;
     Game* game;
     short** valid;
-    short OldRow, OldCol, KingX, KingY;
+    short OldRow, OldCol, KingX, KingY, Egg;
     bool HoldingChess, Empty, InGame;
     Ui::Widget *ui;
 };

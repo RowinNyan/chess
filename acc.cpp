@@ -7,6 +7,8 @@ Acc::Acc(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowTitle(WINDOW_TITLE_ACC);
+    setWindowIcon(QIcon(ICON_CHESS));
+    setFixedSize(400, 160);
 }
 
 Acc::~Acc()
@@ -47,4 +49,37 @@ void Acc::mousePressEvent(QMouseEvent* event){
     }
     Acced();
     hide();
+}
+
+#include "./ui_easteregg.h"
+#include <QFont>
+#include <qfontdatabase.h>
+
+EasterEgg::EasterEgg(QWidget *parent)
+    : QDialog(parent)
+    , ui(new Ui::EasterEgg)
+{
+    ui->setupUi(this);
+    int fontId = QFontDatabase::addApplicationFont(FONT_MAIN);
+    QStringList fontFamilies=QFontDatabase::applicationFontFamilies(fontId);
+    QFont font;
+    font.setFamily(fontFamilies[0]);
+    font.setPointSize(18);
+    ui->ea->setFont(font);
+    ui->ea->setStyleSheet("color:#ff7fea;");
+    setWindowIcon(QIcon(ICON_CHESS));
+    setFixedSize(640, 360);
+}
+
+EasterEgg::~EasterEgg()
+{
+    delete ui;
+}
+
+void EasterEgg::paintEvent(QPaintEvent* event){
+    QPainter painter(this);
+    painter.setRenderHint(QPainter::Antialiasing);
+    QPixmap ea;
+    ea.load(IMG_0);
+    painter.drawPixmap(0, 0, 640, 360, ea);
 }
