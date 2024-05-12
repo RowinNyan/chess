@@ -1,10 +1,27 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+#include <QFont>
+
+enum ChessType{
+    Null, King, Queen, Bishop, kNight, Rook, Pawn
+};
+
+enum Player{
+    Neutral, White, Black
+};
+
+enum End{
+    NotEnding, Checkmate, Stillmate
+};
+
 #define WINDOW_TITLE "国际象棋"
 #define WINDOW_TITLE_CONFIG "设置"
 #define WINDOW_TITLE_FEN "FEN"
+#define WINDOW_TITLE_ACC "升变"
 
+#define FONT_MAIN ":/res/WenQuan.ttf"
+#define ICON_CHESS 
 #define FILE_CONFIG "config"
 
 #define IMG_BOARD ":/res/Board.png"

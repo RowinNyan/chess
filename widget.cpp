@@ -17,6 +17,21 @@ Widget::~Widget()
 }
 
 void Widget::paintEvent(QPaintEvent* event){
+    {
+        ui->Output_PGN->setEnabled(false);
+    }
+    if(InGame){
+        switch (game->turn){
+            case White:
+                ui->TurnLabel->setText("白方回合");
+                break;
+            case Black:
+                ui->TurnLabel->setText("黑方回合");
+                break;
+            default:
+                break;
+        }
+    }
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing);
     QPixmap Board, InCheck, BoardBlock[8][8], BoardChess[8][8];
@@ -160,25 +175,25 @@ void Widget::mousePressEvent(QMouseEvent* event){
                                         else{
                                             game->Castling(game->turn, false);
                                         }
+                                        game->turn = (game->turn==White)? Black : White;
                                         break;
                                     }
+                                    game->MoveChess(OldRow, OldCol, ROW, COL, true);
+                                    game->turn = (game->turn==White)? Black : White;
+                                    break;
                                 case Pawn:
                                     if(OldCol!=COL && game->chess[ROW][COL]->Type()==Null){
                                         game->EnPassant(OldRow, OldCol, ROW, COL);
+                                        game->turn = (game->turn==White)? Black : White;
                                     }
                                     else if(ROW==Temp[(short)game->turn-1]){
                                         game->MoveChess(OldRow, OldCol, ROW, COL, false);
                                         if(Options::AutoAccending){
                                             game->NewChess(ROW, COL, Queen, game->turn);
+                                            game->turn = (game->turn==White)? Black : White;
                                         }
                                         else{
-                                            ////////////////////////////////////////////////////////////////////
-                                            ////////////////////////////////////////////////////////////////////
-                                            ////////////////////////////////////////////////////////////////////
-                                            ////////////////////////////////////////////////////////////////////
-                                            ////////////////////////////////////////////////////////////////////
-                                            ////////////////////////////////////////////////////////////////////
-                                            ////////////////////////////////////////////////////////////////////
+                                            PawnAcc(COL);
                                         }
                                     }
                                     else if(ROW-OldRow==2 || ROW-OldRow==-2){
@@ -189,19 +204,21 @@ void Widget::mousePressEvent(QMouseEvent* event){
                                             game->En_passant[1] = COL;
                                             EP = true;
                                         }
+                                        game->turn = (game->turn==White)? Black : White;
                                     }
                                     else{
                                         game->MoveChess(OldRow, OldCol, ROW, COL, true);
+                                        game->turn = (game->turn==White)? Black : White;
                                     }
                                     break;
                                 default:
                                     game->MoveChess(OldRow, OldCol, ROW, COL, true);
+                                    game->turn = (game->turn==White)? Black : White;
                                     break;
                             }
                             if(!EP){
                                 game->En_passant[0] = game->En_passant[1] = -1;
                             }
-                            game->turn = (game->turn==White)? Black : White;
                         }
                     }
                 }
@@ -239,6 +256,21 @@ void Widget::InitProgram(){
 }
 
 void Widget::InitWindow(){
+    int fontId = QFontDatabase::addApplicationFont(FONT_MAIN);
+    QStringList fontFamilies=QFontDatabase::applicationFontFamilies(fontId);
+    QFont font1, font2;
+    font1.setFamily(fontFamilies[0]);
+    font1.setPointSize(13);
+    font2.setFamily(fontFamilies[0]);
+    font2.setPointSize(20);
+    ui->ExitPro->setFont(font1);
+    ui->Input->setFont(font1);
+    ui->Options->setFont(font1);
+    ui->Output_FEN->setFont(font1);
+    ui->Output_PGN->setFont(font1);
+    ui->StdStart->setFont(font1);
+    ui->StopGame->setFont(font1);
+    ui->TurnLabel->setFont(font2);
     options = new Options();
     acc = new Acc();
     fen = new InputFEN();
@@ -246,12 +278,13 @@ void Widget::InitWindow(){
     timer = new QTimer();
     timer->start(100);
     connect(timer, SIGNAL(timeout()), this, SLOT(RepaintEvent()));
-    HoldingChess = false;
+    HoldingChess = InGame = false;
     Empty = true;
     setFixedSize(960, 720);
     setWindowTitle(WINDOW_TITLE);
     connect(ui->ExitPro, SIGNAL(clicked()), this, SLOT(Quit()));
     connect(fen->ui->InputFEN_2, SIGNAL(clicked()), this, SLOT(FEN_Input()));
+    connect(acc, SIGNAL(Acced()), this, SLOT(AccChess()));
     ui->StopGame->setEnabled(false);
     ui->Output_FEN->setEnabled(false);
     ui->Output_PGN->setEnabled(false);
@@ -262,16 +295,34 @@ void Widget::IsCheckmate(){
         case NotEnding:
             break;
         case Checkmate:
+            switch (game->turn){
+                case White:
+                    ui->TurnLabel->setText("将死\n黑方胜利");
+                    break;
+                case Black:
+                    ui->TurnLabel->setText("将死\n白方胜利");
+                    break;
+                default:
+                    break;
+            }
             game->turn = Neutral;
             ui->StopGame->setEnabled(false);
             ui->Output_FEN->setEnabled(false);
             break;
         case Stillmate:
+            ui->TurnLabel->setText("逼和\n和棋");
             game->turn = Neutral;
             ui->StopGame->setEnabled(false);
             ui->Output_FEN->setEnabled(false);
             break;
     }
+}
+
+void Widget::PawnAcc(short COL){
+    acc->P = game->turn;
+    acc->COL = COL;
+    acc->setWindowModality(Qt::ApplicationModal);
+    acc->show();
 }
 
 void Widget::RepaintEvent(){
@@ -284,33 +335,40 @@ void Widget::Quit(){
 }
 
 void Widget::FEN_Input(){
+    HoldingChess = Empty = false;
+    InGame = true;
     game->InitBoard(1, fen->FEN);
     ui->StopGame->setEnabled(true);
     ui->Output_FEN->setEnabled(true);
     ui->Output_PGN->setEnabled(true);
 }
 
+void Widget::AccChess(){
+    short Temp1[2] = {7, 0};
+    ChessType Temp2[4] = {Queen, Bishop, Rook, kNight};
+    game->NewChess(Temp1[(short)game->turn-1], acc->COL, Temp2[acc->I], game->turn);
+    game->turn = (game->turn==White)? Black : White;
+}
+
 void Widget::on_StdStart_clicked(){
     game->InitBoard(0, "");
-    HoldingChess = false;
-    Empty = false;
+    HoldingChess = Empty = false;
+    InGame = true;
     ui->StopGame->setEnabled(true);
     ui->Output_FEN->setEnabled(true);
     ui->Output_PGN->setEnabled(true);
     update();
 }
 
-
 void Widget::on_StopGame_clicked(){
     game = new Game();
-    HoldingChess = false;
+    HoldingChess = InGame = false;
     Empty = true;
     ui->StdStart->setEnabled(true);
     ui->StopGame->setEnabled(false);
     ui->Output_FEN->setEnabled(false);
     ui->Output_PGN->setEnabled(false);
 }
-
 
 void Widget::on_Options_clicked(){
     options->setWindowModality(Qt::ApplicationModal);
@@ -327,7 +385,6 @@ void Widget::on_Input_clicked(){
     fen->show();
 }
 
-
 void Widget::on_Output_FEN_clicked(){
     fen->setWindowModality(Qt::ApplicationModal);
     fen->setFixedSize(400, 200);
@@ -337,4 +394,3 @@ void Widget::on_Output_FEN_clicked(){
     fen->ui->FEN_String->setPlainText(game->FEN());
     fen->show();
 }
-

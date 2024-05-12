@@ -5,18 +5,7 @@
 #include <QByteArray>
 
 #include "options.h"
-
-enum ChessType{
-    Null, King, Queen, Bishop, kNight, Rook, Pawn
-};
-
-enum Player{
-    Neutral, White, Black
-};
-
-enum End{
-    NotEnding, Checkmate, Stillmate
-};
+#include "config.h"
 
 class ChessBase{
     public:

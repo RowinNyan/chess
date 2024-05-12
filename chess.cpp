@@ -1008,6 +1008,7 @@ void Game::MoveChess(short OldRow, short OldCol, short NewRow, short NewCol, boo
                     break;
                 case 7:
                     _Castling[1][0] = _Castling[1][1] = false;
+                    break;
             }
             break;
         case Rook:
@@ -1033,6 +1034,7 @@ void Game::MoveChess(short OldRow, short OldCol, short NewRow, short NewCol, boo
                     }
                     break;
             }
+            break;
         default:
             break;
     }

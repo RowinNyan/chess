@@ -37,11 +37,13 @@ public:
     void paintEvent(QPaintEvent*);
     void mousePressEvent(QMouseEvent*);
     void IsCheckmate();
+    void PawnAcc(short);
 
 private slots:
     void RepaintEvent();
     void Quit();
     void FEN_Input();
+    void AccChess();
     void on_StdStart_clicked();
     void on_StopGame_clicked();
     void on_Options_clicked();
@@ -56,7 +58,7 @@ private:
     Game* game;
     short** valid;
     short OldRow, OldCol, KingX, KingY;
-    bool HoldingChess, Empty;
+    bool HoldingChess, Empty, InGame;
     Ui::Widget *ui;
 };
 #endif // WIDGET_H

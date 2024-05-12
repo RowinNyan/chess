@@ -16,10 +16,10 @@
   <widget class="QPushButton" name="StopGame">
    <property name="geometry">
     <rect>
-     <x>760</x>
-     <y>530</y>
-     <width>141</width>
-     <height>41</height>
+     <x>750</x>
+     <y>510</y>
+     <width>161</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="text">
@@ -29,10 +29,10 @@
   <widget class="QPushButton" name="StdStart">
    <property name="geometry">
     <rect>
-     <x>760</x>
-     <y>330</y>
-     <width>141</width>
-     <height>41</height>
+     <x>750</x>
+     <y>270</y>
+     <width>161</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="text">
@@ -42,10 +42,10 @@
   <widget class="QPushButton" name="Input">
    <property name="geometry">
     <rect>
-     <x>760</x>
-     <y>380</y>
-     <width>141</width>
-     <height>41</height>
+     <x>750</x>
+     <y>330</y>
+     <width>161</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="text">
@@ -55,10 +55,10 @@
   <widget class="QPushButton" name="Output_PGN">
    <property name="geometry">
     <rect>
-     <x>760</x>
-     <y>430</y>
-     <width>141</width>
-     <height>41</height>
+     <x>750</x>
+     <y>390</y>
+     <width>161</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="text">
@@ -68,10 +68,10 @@
   <widget class="QPushButton" name="Output_FEN">
    <property name="geometry">
     <rect>
-     <x>760</x>
-     <y>480</y>
-     <width>141</width>
-     <height>41</height>
+     <x>750</x>
+     <y>450</y>
+     <width>161</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="text">
@@ -81,10 +81,10 @@
   <widget class="QPushButton" name="ExitPro">
    <property name="geometry">
     <rect>
-     <x>760</x>
+     <x>750</x>
      <y>630</y>
-     <width>141</width>
-     <height>41</height>
+     <width>161</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="text">
@@ -94,14 +94,30 @@
   <widget class="QPushButton" name="Options">
    <property name="geometry">
     <rect>
-     <x>760</x>
-     <y>580</y>
-     <width>141</width>
-     <height>41</height>
+     <x>750</x>
+     <y>570</y>
+     <width>161</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="text">
     <string>偏好设置</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="TurnLabel">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>80</y>
+     <width>161</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignHCenter|Qt::AlignTop</set>
    </property>
   </widget>
  </widget>

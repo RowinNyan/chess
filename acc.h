@@ -2,6 +2,11 @@
 #define ACC_H
 
 #include <QWidget>
+#include <QPainter>
+#include <QPixmap>
+#include <QMouseEvent>
+
+#include "config.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -15,6 +20,14 @@ class Acc : public QWidget
 public:
     Acc(QWidget *parent = nullptr);
     ~Acc();
+    void paintEvent(QPaintEvent*);
+    void mousePressEvent(QMouseEvent*);
+
+    Player P;
+    short COL, I;
+
+signals:
+    void Acced();
 
 private:
     Ui::Acc *ui;

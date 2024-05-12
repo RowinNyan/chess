@@ -18,6 +18,10 @@ Options::~Options()
 }
 
 void Options::InitWindow(){
+    {
+        ui->DarkColor->setEnabled(false);
+        ui->Drag->setEnabled(false);
+    }
     setFixedSize(400, 300);
     setWindowTitle(WINDOW_TITLE_CONFIG);
     _ClickToMove = new QButtonGroup(this);

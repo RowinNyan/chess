@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QString>
 
+#include "config.h"
+
 namespace Ui {
 class InputFEN;
 }
