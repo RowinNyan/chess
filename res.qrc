@@ -19,5 +19,6 @@
         <file>res/WenQuan.ttf</file>
         <file>res/Chess.ico</file>
         <file>res/0.png</file>
+        <file>res/ValidBlock2.png</file>
     </qresource>
 </RCC>

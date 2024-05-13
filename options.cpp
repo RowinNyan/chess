@@ -19,7 +19,6 @@ Options::~Options()
 
 void Options::InitWindow(){
     {
-        ui->DarkColor->setEnabled(false);
         ui->Drag->setEnabled(false);
     }
     setFixedSize(400, 300);

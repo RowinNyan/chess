@@ -21,6 +21,23 @@ void Widget::paintEvent(QPaintEvent* event){
     {
         ui->Output_PGN->setEnabled(false);
     }
+    if(Options::LightColorMode){
+        ui->TurnLabel->setStyleSheet("color:#0f0f0f;");
+    }
+    else{
+        ui->TurnLabel->setStyleSheet("color:#f0f0f0;");
+        QPainter p(this);
+        QPen pen;
+        QBrush brush;
+        QColor color;
+        color.setRgb(15, 15, 15);
+        pen.setColor(color);
+        brush.setColor(color);
+        brush.setStyle(Qt::SolidPattern);
+        p.setPen(pen);
+        p.setBrush(brush);
+        p.drawRect(rect());
+    }
     if(InGame){
         switch (game->turn){
             case White:
@@ -43,7 +60,12 @@ void Widget::paintEvent(QPaintEvent* event){
         for(short ROW=0; ROW<8; ROW++){
             for(short COL=0; COL<8; COL++){
                 if(ROW==OldRow && COL==OldCol){
-                    BoardBlock[ROW][COL].load(IMG_VALID_BLOCK);
+                    if((ROW+COL)%2){
+                        BoardBlock[ROW][COL].load(IMG_VALID_BLOCK);
+                    }
+                    else{
+                        BoardBlock[ROW][COL].load(IMG_VALID_BLOCK2);
+                    }
                     painter.drawPixmap(60+COL*80, 600-ROW*80, 80, 80, BoardBlock[ROW][COL]);
                     continue;
                 }
@@ -57,7 +79,12 @@ void Widget::paintEvent(QPaintEvent* event){
                             painter.drawPixmap(60+COL*80, 600-ROW*80, 80, 80, BoardBlock[ROW][COL]);
                         }
                         else{
-                            BoardBlock[ROW][COL].load(IMG_VALID_BLOCK);
+                            if((ROW+COL)%2){
+                                BoardBlock[ROW][COL].load(IMG_VALID_BLOCK);
+                            }
+                            else{
+                                BoardBlock[ROW][COL].load(IMG_VALID_BLOCK2);
+                            }
                             painter.drawPixmap(60+COL*80, 600-ROW*80, 80, 80, BoardBlock[ROW][COL]);
                         }
                     }
@@ -76,8 +103,8 @@ void Widget::paintEvent(QPaintEvent* event){
             KingX = 60+KingPos[1]*80;
             KingY = 600-KingPos[0]*80;
             painter.drawPixmap(KingX, KingY, 80, 80, InCheck);
-            IsCheckmate();
         }
+        IsCheckmate();
     }
     for(short ROW=0; ROW<8; ROW++){
         for(short COL=0; COL<8; COL++){
@@ -142,7 +169,7 @@ void Widget::mousePressEvent(QMouseEvent* event){
     }
     if(Options::ClickToMove){
         if(!HoldingChess){
-            if(event->button()==Qt::LeftButton){
+            if(game->turn!=Neutral && event->button()==Qt::LeftButton){
                 if(event->pos().x()>60 && event->pos().x()<700 && event->pos().y()>40 && event->pos().y()<680){
                     if(game->chess[(680-event->pos().y())/80][(event->pos().x()-60)/80]->p==game->turn){
                         OldRow = (680-event->pos().y())/80;
@@ -333,6 +360,7 @@ void Widget::IsCheckmate(){
             game->turn = Neutral;
             ui->StopGame->setEnabled(false);
             ui->Output_FEN->setEnabled(false);
+            Empty = true;
             break;
     }
 }
@@ -387,6 +415,7 @@ void Widget::on_StopGame_clicked(){
     ui->StopGame->setEnabled(false);
     ui->Output_FEN->setEnabled(false);
     ui->Output_PGN->setEnabled(false);
+    ui->TurnLabel->setText("");
 }
 
 void Widget::on_Options_clicked(){

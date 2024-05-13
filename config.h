@@ -37,6 +37,7 @@ enum End{
 #define IMG_BLACK_ROOK ":/res/BlackRook.png"
 #define IMG_BLACK_PAWN ":/res/BlackPawn.png"
 #define IMG_VALID_BLOCK ":/res/ValidBlock.png"
+#define IMG_VALID_BLOCK2 ":/res/ValidBlock2.png"
 #define IMG_VALID_POINT ":/res/ValidPoint.png"
 #define IMG_0 ":/res/0.png"
 
